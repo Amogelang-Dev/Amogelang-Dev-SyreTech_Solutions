@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | SyreTech Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">SyreTech Solutions</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="admin.html" class="active btn-admin">Admin Portal</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="page-title">Admin Dashboard</h1>
+    <p class="page-subtitle">Upload newly completed SyreTech projects straight to Cloud Firestore online database.</p>
+
+    <div style="max-width: 650px; background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 2rem;">
+      <h3 style="margin-bottom: 1rem; color: var(--accent-cyan);">Upload New Project</h3>
+      
+      <form id="add-project-form">
+        <div class="form-group">
+          <label>Project Title</label>
+          <input type="text" id="p-title" required placeholder="e.g. SyreTask Native App">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="p-category">
+            <option value="Web Application">Web Application</option>
+            <option value="Mobile App">Mobile App</option>
+            <option value="Cloud Solution">Cloud Solution</option>
+            <option value="Database Systems">Database Systems</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Technologies Used (comma separated)</label>
+          <input type="text" id="p-tech" required placeholder="e.g. Kotlin, SQLite, Firebase">
+        </div>
+        <div class="form-group">
+          <label>Project Description</label>
+          <textarea id="p-desc" rows="4" required placeholder="Describe system architecture and functionality..."></textarea>
+        </div>
+        <button type="submit" id="btn-submit" class="btn-primary" style="width: 100%;">Save to Firestore Database</button>
+      </form>
+      <p id="status-msg" style="margin-top: 1rem; text-align: center; color: var(--accent-cyan);"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 SyreTech Solutions. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
