@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | SyreTech Solutions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand-logo">SyreTech<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#portfolio">&larr; Back to Showcase</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <section class="section" style="max-width: 900px;">
+      <div id="project-detail-container">
+        <!-- Dynamically rendered via JS based on ?id= query param -->
+        <div class="hero-subtitle" id="proj-client">Client / Category</div>
+        <h1 id="proj-title" style="margin-bottom: 1rem;">Project Title Loading...</h1>
+        <div class="tech-tags" id="proj-tags"></div>
+        
+        <img id="proj-image" src="https://via.placeholder.com/900x450/182030/9ca3af?text=Project+Preview" alt="Preview" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin: 2rem 0;">
+        
+        <div class="card" style="margin-bottom: 2rem;">
+          <h2>System Architecture & Overview</h2>
+          <p id="proj-overview" style="margin-top: 1rem;">Loading project breakdown...</p>
+        </div>
+
+        <div class="hero-actions" style="justify-content: flex-start;">
+          <a id="proj-live-btn" href="#" target="_blank" class="btn btn-primary">Visit Live Platform</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 SyreTech Solutions.</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/project.js"></script>
+</body>
+</html>
