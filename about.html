@@ -1,53 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | SyreTech Solutions</title>
-  <link rel="stylesheet" href="style.css?v=20260929">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SyreTech Solutions</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-pure: #ffffff;
+            --bg-subtle: #f4f7fa;
+            --electric-blue: #0047AB; 
+            --electric-hover: #003580;
+            --text-main: #0f172a;
+            --text-white: #ffffff;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --footer-dark: #050a14;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: flex-col;
+            overflow-x: hidden;
+        }
+
+        /* --- STICKY GLASSMORPHISM NAVIGATION --- */
+        nav { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(255, 255, 255, 0.92); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0; 
+            border-bottom: 1px solid var(--border); 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            transition: padding 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { 
+            font-weight: 800; 
+            letter-spacing: 2px; 
+            color: var(--electric-blue); 
+            text-decoration: none; 
+            font-size: 1.4rem;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--electric-hover);
+        }
+
+        .back-link { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-link:hover { 
+            color: var(--electric-blue); 
+            transform: translateX(-4px);
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        main {
+            flex: 1;
+        }
+
+        section { 
+            padding: 100px 8%; 
+        }
+
+        /* HERO SECTION */
+        .about-hero {
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-subtle) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .about-text h1 span { 
+            color: var(--electric-blue); 
+        }
+
+        .about-text p { 
+            color: var(--text-muted); 
+            font-size: 1.1rem; 
+            margin-bottom: 20px; 
+            line-height: 1.7;
+        }
+
+        .about-visual-card {
+            background: white; 
+            border: 1px solid var(--border); 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-visual-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.07);
+        }
+
+        .progress-bar-bg {
+            width: 100%; 
+            height: 6px; 
+            background: #e2e8f0; 
+            margin-bottom: 12px; 
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            width: 95%; 
+            height: 100%; 
+            background: var(--electric-blue);
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* CORE VALUES SECTION */
+        .values-section { 
+            background: #ffffff; 
+            text-align: center; 
+        }
+
+        .values-section-title {
+            font-size: clamp(2rem, 4vw, 2.4rem); 
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .value-card {
+            padding: 40px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .value-card p {
+            font-size: 0.95rem; 
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .value-card:hover { 
+            border-color: var(--electric-blue); 
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 71, 171, 0.08);
+        }
+
+        /* FOUNDER SECTION */
+        .founder-section { 
+            background: var(--bg-subtle); 
+        }
+
+        .founder-card {
+            background: white;
+            display: flex;
+            gap: 50px;
+            padding: 60px;
+            border-radius: 8px;
+            align-items: center;
+            border: 1px solid var(--border);
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: border-color 0.3s ease;
+        }
+
+        .founder-card:hover {
+            border-color: #cbd5e1;
+        }
+
+        .founder-img-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .founder-img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: var(--electric-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .founder-info h2 { 
+            font-size: 2.2rem; 
+            font-weight: 800;
+            margin-bottom: 6px; 
+            letter-spacing: -0.5px;
+        }
+
+        .founder-info .title { 
+            color: var(--electric-blue); 
+            font-weight: 800; 
+            font-size: 0.95rem;
+            margin-bottom: 20px; 
+            display: block; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .founder-info p {
+            color: var(--text-muted); 
+            font-size: 1rem; 
+            line-height: 1.8;
+        }
+
+        .founder-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .founder-cta a {
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cta-github {
+            color: var(--text-main);
+        }
+
+        .cta-github:hover {
+            color: var(--electric-blue);
+            transform: translateX(3px);
+        }
+
+        .cta-contact {
+            color: var(--electric-blue);
+        }
+
+        .cta-contact:hover {
+            color: var(--electric-hover);
+            transform: translateX(3px);
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            text-align: center; 
+            padding: 50px 8%; 
+            color: var(--text-muted); 
+            font-size: 0.88rem; 
+            border-top: 1px solid var(--border); 
+            background: #ffffff;
+        }
+
+        /* --- RESPONSIVE LOGIC --- */
+        @media (max-width: 992px) {
+            section {
+                padding: 70px 6%;
+            }
+
+            .about-grid { 
+                grid-template-columns: 1fr; 
+                gap: 50px; 
+            }
+
+            .founder-card { 
+                flex-direction: column; 
+                gap: 35px; 
+                text-align: center; 
+                padding: 40px 30px;
+            }
+
+            .founder-cta {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 50px 5%;
+            }
+
+            .nav-content {
+                padding: 0 5%;
+            }
+
+            .about-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .value-card {
+                padding: 30px 20px;
+            }
+
+            .founder-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">SyreTech Solutions</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="admin.html" class="btn-admin">Admin Portal</a></li>
-      </ul>
-    </div>
-  </header>
 
-  <main>
-    <h1 class="page-title">About SyreTech Solutions</h1>
-    <p class="page-subtitle">Pioneering functional software solutions across web, cloud, and mobile environments.</p>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">SYRETECH</a>
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+        </div>
+    </nav>
 
-    <section class="founder-card" style="margin-bottom: 3rem;">
-      <div class="founder-avatar">ARM</div>
-      <div class="founder-info">
-        <h3>Amogelang Refilwe Matlhaga</h3>
-        <p class="founder-role">Founder & Lead Software Engineer</p>
-        <p>Amogelang is a software development professional specializing in full-stack web platforms, mobile application design, and cloud database infrastructure. Operating out of Midrand, Gauteng, South Africa, he combines engineering discipline with a strong focus on user-centered digital systems.</p>
-      </div>
-    </section>
+    <main>
+        <section class="about-hero">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span style="color: var(--electric-blue); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 10px;">Our Mission</span>
+                    <h1>Engineering with <br><span>Precision.</span></h1>
+                    <p>SyreTech Solutions was founded with a clear objective: to provide enterprise-grade software engineering to businesses of all sizes.</p>
+                    <p>We don't just build websites; we engineer ecosystems. Our focus is on the long-term scalability and security of every line of code we ship.</p>
+                </div>
+                <div class="about-visual">
+                    <div class="about-visual-card">
+                        <h3 style="margin-bottom: 16px; font-weight: 800; color: var(--electric-blue); font-size: 1.2rem;">The Engineering Standard</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px;">We follow strict development protocols to ensure maximum uptime, optimal speed, and enterprise performance.</p>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; font-weight: 800; color: var(--text-main); letter-spacing: 1px;">CODE EFFICIENCY &mdash; 95%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="grid">
-      <div class="card">
-        <h3>Our Vision</h3>
-        <p>To bridge technical complexity with efficient, high-impact applications that solve real-world operational challenges.</p>
-      </div>
-      <div class="card">
-        <h3>Tech Stack Mastery</h3>
-        <p>C#, Kotlin, PHP, SQL, React, ASP.NET Core MVC, Firebase, Three.js, and Azure DevOps.</p>
-      </div>
-    </section>
-  </main>
+        <section class="values-section">
+            <h2 class="values-section-title">Our Core Philosophy</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Scalability First</h3>
+                    <p>We design databases and architectures that grow alongside your user base without performance degradation.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Security by Design</h3>
+                    <p>From SQL injection prevention to secure API authentication, security is integrated, not added on.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Clean Code</h3>
+                    <p>Maintainable, well-documented code allows for faster updates and seamless technical transitions.</p>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2026 SyreTech Solutions. All rights reserved.</p>
-  </footer>
+        <section class="founder-section">
+            <div class="founder-card">
+                <div class="founder-img-wrapper">
+                    <!-- Image with graceful CSS initials fallback if file missing -->
+                    <img src="images/Matlhaga-Amo.jpeg" alt="Amo Matlhaga" class="founder-img" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'founder-img\'>ARM</div>';">
+                </div>
+                <div class="founder-info">
+                    <h2>Amo Matlhaga</h2>
+                    <span class="title">Lead Software Engineer &amp; Founder</span>
+                    <p>
+                        Specializing in Kotlin, PHP, and C#, I built SyreTech Solutions out of a deep-seated passion for the transformative power of technology. I am driven by the excitement of taking a complex problem and engineering a solution that is not only functional but truly innovative. For me, software development isn't just about writing code; it's about the relentless pursuit of efficient, creative ways to bridge the gap between human challenges and digital possibilities. I am constantly inspired by the potential of tech to evolve, and I bring that energy into every project, ensuring we push the boundaries of what’s possible for our clients.
+                    </p>
+                    <div class="founder-cta">
+                        <a href="https://github.com/Amogelang-Dev" target="_blank" rel="noopener" class="cta-github">GITHUB &rarr;</a>
+                        <a href="contact.html" class="cta-contact">CONTACT &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; <span id="year-display">2026</span> SyreTech Solutions. All Rights Reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set dynamic copyright year
+            const yearSpan = document.getElementById('year-display');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Keyboard shortcut for portal access (Ctrl + L)
+            document.addEventListener('keydown', (e) => {
+                if (e.key.toLowerCase() === 'l' && e.ctrlKey) { 
+                    e.preventDefault();
+                    window.location.href = 'syre_portal.html';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
